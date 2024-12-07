@@ -13,12 +13,21 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
-from django.contrib import admin
-from django.conf.urls.static import static
-from django.conf import settings
 from filebrowser.sites import site
-from .views import TestCreateView, TestDisplayView
+
+from django import VERSION
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import include
+
+from test_tinymce.views import TestCreateView, TestDisplayView
+
+
+if VERSION < (4, 0):
+    from django.conf.urls import url
+else:
+    from django.urls import path as url
 
 
 urlpatterns = [

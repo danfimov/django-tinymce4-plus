@@ -1,0 +1,149 @@
+[project]
+name = "django-tinymce4-plus"
+version = "1.9.0"
+description = "A Django application that provides a fully functional TinyMCE 4 editor widget for models and forms."
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT License"}
+authors = [
+    {name = "Roman Miroshnychenko (original package author)", email = "roman1972@gmail.com"},
+    {name = "Anfimov Dmitrii (fork author)", email = "danfimov@yandex.ru"}
+]
+keywords = ["django", "wysiwyg", "editor", "widget", "tinymce"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Framework :: Django",
+    "Framework :: Django :: 1.11",
+    "Framework :: Django :: 2.2",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.2",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+dependencies = [
+    "django>=1.11",
+    "jsmin",
+]
+
+[project.optional-dependencies]
+enchant = [
+    "pyenchant>=3.2.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.4",
+    "pytest-coverage>=0.0",
+    "ruff>=0.8.2",
+    "selenium>=4.27.1",
+    "pytest-django>=4.9.0",
+    "django-filebrowser-no-grappelli>=4.0.2",
+    "pillow>=10.4.0",
+]
+docs = [
+    "mkdocs-material>=9.5.47",
+]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "test_tinymce.settings"
+addopts = [
+    "-p no:pastebin",
+    "-p no:nose",
+    "-p no:doctest",
+]
+testpaths = [
+    "test_tinymce/tests",
+]
+
+[tool.coverage.run]
+source = [
+    "timymce",
+]
+
+omit = [
+    "*/migrations/*",
+]
+branch = true
+
+[tool.coverage.report]
+sort = "-miss"
+precision = 2
+skip_empty = true
+exclude_also = [
+    # Don't complain about missing debug-only code:
+    "def __repr__",
+    "if self\\.debug",
+
+    # Don't complain if tests don't hit defensive assertion code:
+    "raise AssertionError",
+    "raise NotImplementedError",
+
+    # Don't complain if non-runnable code isn't run:
+    "if 0:",
+    "if __name__ == .__main__.:",
+
+    # Don't complain about abstract methods, they aren't run:
+    "@(abc\\.)?abstractmethod",
+
+    # typing-related code
+    "^\\s*if (False|TYPE_CHECKING):",
+    ": \\.\\.\\.(\\s*#.*)?$",
+    "^ +\\.\\.\\.$",
+    "-> ['\"]?NoReturn['\"]?:",
+]
+
+[tool.ruff]
+line-length = 120
+exclude = [
+    ".ruff_cache",
+    ".venv",
+    "venv",
+    "media",
+    "docs",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = [
+    "S101",
+]
+
+[tool.ruff.lint]
+select = [
+    "I",  # isort
+    "A",  # flake8-builtins
+    "C4",  # flake8-comprehensions
+    # pyflakes
+    "E",
+    "W",
+    "N",  # pep8-naming
+    "S",  # flake8-bandit
+    "SIM",  # flake8-simplify
+]
+ignore = [
+    "N818",  # Exception name ... should be named with an Error suffix
+    "S113",  # Probable use of `requests` call without timeout
+    "S307",  # Use of possibly insecure function; consider using `ast.literal_eval`
+    "S311",  # Standard pseudo-random generators are not suitable for cryptographic purposes
+]
+
+[tool.ruff.lint.isort.sections]
+django = ["django"]
+
+[tool.ruff.lint.isort]
+section-order = [
+  "future",
+  "standard-library",
+  "third-party",
+  "django",
+  "first-party",
+  "local-folder",
+]
+lines-after-imports = 2

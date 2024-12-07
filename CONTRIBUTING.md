@@ -1,4 +1,4 @@
-# Contributing django-tinymce4-lite
+# Contributing django-tinymce4-plus
 
 ## Submitting Issues
 
@@ -14,7 +14,7 @@ including:
 
 ## Creating Pull Requests
 
-Any help with developing `django-tinymce4-lite` is always appreciated. When
+Any help with developing `django-tinymce4-plus` is always appreciated. When
 submitting pull requests please follow these rules:
 
 - PRs should be submited into `develop` branch.

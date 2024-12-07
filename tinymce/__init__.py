@@ -1,7 +1,5 @@
-# coding: utf-8
-# License: MIT, see LICENSE.txt
 """
-django-tinymce4-lite
+django-tinymce4-plus
 --------------------
 
 This application provides a rich-text WYSIWYG `TinyMCE 4`_ widget
@@ -11,7 +9,9 @@ for Django forms and models.
 """
 
 from __future__ import absolute_import
-from .models import HTMLField
-from .widgets import TinyMCE, AdminTinyMCE
+
+from tinymce.models import HTMLField
+from tinymce.widgets import AdminTinyMCE, TinyMCE
+
 
 __all__ = ['HTMLField', 'TinyMCE', 'AdminTinyMCE']
