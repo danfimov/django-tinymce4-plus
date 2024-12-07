@@ -1,5 +1,13 @@
-from django.conf.urls import url
-from .views import spell_check, filebrowser, css, spell_check_callback
+from django import VERSION
+
+
+if VERSION < (4, 0):
+    from django.conf.urls import url
+else:
+    from django.urls import re_path as url
+
+from tinymce.views import css, filebrowser, spell_check, spell_check_callback
+
 
 urlpatterns = [
     url(r'^spellchecker/$', spell_check, name='tinymce-spellchecker'),

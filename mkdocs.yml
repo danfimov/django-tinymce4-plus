@@ -1,0 +1,67 @@
+site_name: django-tinymce4-plus
+site_url: http://danfimov.gitlab.io/django-tinymce4-plus
+repo_url: https://github.com/danfimov/django-tinymce4-plus
+repo_name: django-tinymce4-plus
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+  icon:
+    repo: fontawesome/brands/github-alt
+  language: en
+  palette:
+    primary: blue
+    accent: blue
+
+nav:
+  - General: index.md
+  - Installation: installation.md
+  - Configuration: configuration.md
+  - Usage: usage.md
+  - Advanced usage: advanced.md
+  - Example project: example_project.md
+  - Changelog: changelog.md
+markdown_extensions:
+  # Python Markdown
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+  # pymdownx blocks
+  - pymdownx.blocks.admonition:
+      types:
+      - note
+      - attention
+      - caution
+      - danger
+      - error
+      - tip
+      - hint
+      - warning

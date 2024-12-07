@@ -1,24 +1,22 @@
-# License: MIT, see LICENSE.txt
-"""
-django-tinymce4-lite views
-"""
 import json
 import logging
+from contextlib import suppress
+
+from jsmin import jsmin
+
 from django import VERSION
-from django.urls import reverse, NoReverseMatch
-from django.http import JsonResponse, HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.template.loader import render_to_string
+from django.urls import NoReverseMatch, reverse
 from django.utils.html import strip_tags
 from django.views.decorators.cache import never_cache
-from jsmin import jsmin
-try:
+
+
+with suppress(ImportError):
     from enchant import checker, list_languages
-except ImportError:
-    pass
 
-__all__ = ['spell_check', 'spell_check_callback', 'css', 'filebrowser']
 
-logging.basicConfig(format='[%(asctime)s] %(module)s: %(levelname)s - %(message)s')
+
 logger = logging.getLogger(__name__)
 
 
@@ -33,28 +31,27 @@ def spell_check(request):
         with spellcheck results for TinyMCE 4
     :rtype: django.http.JsonResponse
     """
-    data = json.loads(request.body.decode('utf-8'))
-    output = {'id': data['id']}
+    data = json.loads(request.body.decode("utf-8"))
+    output = {"id": data["id"]}
     error = None
     status = 200
     try:
-        if data['params']['lang'] not in list_languages():
-            error = 'Missing {0} dictionary!'.format(data['params']['lang'])
+        if data["params"]["lang"] not in list_languages():
+            error = "Missing {0} dictionary!".format(data["params"]["lang"])
             raise LookupError(error)
-        spell_checker = checker.SpellChecker(data['params']['lang'])
-        spell_checker.set_text(strip_tags(data['params']['text']))
-        output['result'] = {spell_checker.word: spell_checker.suggest()
-                            for err in spell_checker}
+        spell_checker = checker.SpellChecker(data["params"]["lang"])
+        spell_checker.set_text(strip_tags(data["params"]["text"]))
+        output["result"] = {spell_checker.word: spell_checker.suggest() for err in spell_checker}
     except NameError:
-        error = 'The pyenchant package is not installed!'
+        error = "The pyenchant package is not installed!"
         logger.exception(error)
     except LookupError:
         logger.exception(error)
     except Exception:
-        error = 'Unknown error!'
+        error = "Unknown error!"
         logger.exception(error)
     if error is not None:
-        output['error'] = error
+        output["error"] = error
         status = 500
     return JsonResponse(output, status=status)
 
@@ -70,9 +67,9 @@ def spell_check_callback(request):
     :rtype: django.http.HttpResponse
     """
     return HttpResponse(
-        jsmin(render_to_string('tinymce/spellcheck-callback.js',
-                               request=request)),
-        content_type='application/javascript; charset=utf-8')
+        jsmin(render_to_string("tinymce/spellcheck-callback.js", request=request)),
+        content_type="application/javascript; charset=utf-8",
+    )
 
 
 @never_cache
@@ -90,13 +87,14 @@ def css(request):
     margin_left = 170  # For Django >= 1.9 style admin
     # For Django >= 2.0 responsive admin
     responsive_admin = VERSION[:2] >= (2, 0)
-    return HttpResponse(render_to_string('tinymce/tinymce4.css',
-                                         context={
-                                             'margin_left': margin_left,
-                                             'responsive_admin': responsive_admin
-                                         },
-                                         request=request),
-                        content_type='text/css; charset=utf-8')
+    return HttpResponse(
+        render_to_string(
+            "tinymce/tinymce4.css",
+            context={"margin_left": margin_left, "responsive_admin": responsive_admin},
+            request=request,
+        ),
+        content_type="text/css; charset=utf-8",
+    )
 
 
 @never_cache
@@ -112,10 +110,13 @@ def filebrowser(request):
     .. _django-filebrowser: https://github.com/sehmaschine/django-filebrowser
     """
     try:
-        fb_url = reverse('fb_browse')
+        fb_url = reverse("fb_browse")
     except NoReverseMatch:
-        fb_url = reverse('filebrowser:fb_browse')
-    return HttpResponse(jsmin(render_to_string('tinymce/filebrowser.js',
-                                               context={'fb_url': fb_url},
-                                               request=request)),
-                        content_type='application/javascript; charset=utf-8')
+        fb_url = reverse("filebrowser:fb_browse")
+    return HttpResponse(
+        jsmin(render_to_string("tinymce/filebrowser.js", context={"fb_url": fb_url}, request=request)),
+        content_type="application/javascript; charset=utf-8",
+    )
+
+
+__all__ = ["spell_check", "spell_check_callback", "css", "filebrowser"]

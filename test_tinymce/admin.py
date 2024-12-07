@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import TestModel, TestChildModel
+
+from .models import TestChildModel, TestModel
 
 
 class ChildInline(admin.StackedInline):

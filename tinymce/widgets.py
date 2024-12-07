@@ -9,20 +9,30 @@ import json
 import logging
 import os
 
+from jsmin import jsmin
+
+from django import VERSION
 from django.conf import settings
+from django.contrib.admin import widgets as admin_widgets
 from django.contrib.staticfiles import finders
 from django.core.serializers.json import DjangoJSONEncoder
-from django.forms import Textarea, Media
+from django.forms import Media, Textarea
 from django.forms.utils import flatatt
-from django.utils.encoding import smart_text
-from django.utils.safestring import mark_safe
-from django.utils.html import escape
-from django.utils.translation import get_language, get_language_bidi
 from django.template.loader import render_to_string
 from django.urls import reverse
-from django.contrib.admin import widgets as admin_widgets
-from jsmin import jsmin
-from . import settings as mce_settings
+from django.utils.html import escape
+from django.utils.safestring import mark_safe
+from django.utils.translation import get_language, get_language_bidi
+
+
+if VERSION < (4, 0):
+    from django.utils.encoding import smart_text
+else:
+    from django.utils.encoding import smart_str as smart_text
+
+
+from tinymce import settings as mce_settings
+
 
 __all__ = ['TinyMCE', 'render_tinymce_init_js']
 
@@ -190,7 +200,7 @@ class TinyMCE(Textarea):
                                          final_attrs['id'])
                   )
         )
-        return mark_safe(html)
+        return mark_safe(html)  # noqa: S308
 
     @property
     def media(self):

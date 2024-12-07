@@ -1,11 +1,7 @@
-# Copyright (c) 2008 Joost Cassee, 2016 Roman Miroshnychenko
-# Licensed under the terms of the MIT License (see LICENSE.txt)
-
-from django.db import models
 from django.contrib.admin.widgets import AdminTextareaWidget
-from .widgets import TinyMCE, AdminTinyMCE
+from django.db import models
 
-__all__ = ['HTMLField']
+from tinymce.widgets import AdminTinyMCE, TinyMCE
 
 
 class HTMLField(models.TextField):
@@ -22,7 +18,7 @@ class HTMLField(models.TextField):
         class Foo(Model):
             html_content = HTMLField('HTML content')
     """
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs) -> None:
         self.tinymce_profile = kwargs.pop('profile', None)
         super(HTMLField, self).__init__(*args, **kwargs)
 
@@ -35,3 +31,6 @@ class HTMLField(models.TextField):
         if defaults['widget'] == AdminTextareaWidget:
             defaults['widget'] = AdminTinyMCE(profile=self.tinymce_profile)
         return super(HTMLField, self).formfield(**defaults)
+
+
+__all__ = ['HTMLField']
