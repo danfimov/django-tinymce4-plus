@@ -1,12 +1,11 @@
 [project]
 name = "django-tinymce4-plus"
-version = "1.9.0"
 description = "A Django application that provides a fully functional TinyMCE 4 editor widget for models and forms."
 readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT License"}
 authors = [
-    {name = "Roman Miroshnychenko (original package author)", email = "roman1972@gmail.com"},
+    {name = "Roman Miroshnychenko (django-tinymce4-lite package author)", email = "roman1972@gmail.com"},
     {name = "Anfimov Dmitrii (fork author)", email = "danfimov@yandex.ru"}
 ]
 keywords = ["django", "wysiwyg", "editor", "widget", "tinymce"]
@@ -24,14 +23,26 @@ classifiers = [
     "Framework :: Django :: 2.2",
     "Framework :: Django :: 3.2",
     "Framework :: Django :: 4.2",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
     "Topic :: Software Development :: Libraries :: Application Frameworks",
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
-
+dynamic = ["version"]
 dependencies = [
     "django>=1.11",
     "jsmin",
 ]
+
+[project.urls]
+homepage = "https://github.com/danfimov/django-tinymce4-plus"
+repository = "https://github.com/danfimov/django-tinymce4-plus"
+documentation = "http://dafimov.github.io/django-tinymce4-plus"
+issues = "http://dafimov.github.io/django-tinymce4-plus/issues"
+changelog = "https://github.com/danfimov/django-tinymce4-plus/docs/changelog.md"
 
 [project.optional-dependencies]
 enchant = [
@@ -51,6 +62,14 @@ dev = [
 docs = [
     "mkdocs-material>=9.5.47",
 ]
+
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["tinymce"]
+exclude = ["docs", "test_tinymce", "manage.py"]
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "test_tinymce.settings"
