@@ -18,7 +18,6 @@ with suppress(ImportError):
     from enchant import checker, list_languages
 
 
-
 logger = logging.getLogger(__name__)
 
 
@@ -89,7 +88,7 @@ def css(request):
 
     # For Django >= 1.9 style admin
     margin_left = 0
-    if not mce_settings.DISABLE_MARGIN_FIX and VERSION[:2] >= (1, 9):
+    if not mce_settings.DISABLE_MARGIN_FIX and VERSION[:2] <= (1, 9):
         margin_left = 170
 
     # For Django >= 2.0 responsive admin
