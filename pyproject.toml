@@ -2,7 +2,7 @@
 name = "django-tinymce4-plus"
 description = "A Django application that provides a fully functional TinyMCE 4 editor widget for models and forms."
 readme = "README.md"
-version = "1.9.0"
+version = "1.9.1"
 requires-python = ">=3.8"
 license = {text = "MIT License"}
 authors = [
@@ -53,7 +53,7 @@ enchant = [
 dev = [
     "pytest>=8.3.4",
     "pytest-coverage>=0.0",
-    "ruff>=0.8.2",
+    "ruff>=0.8.1",
     "selenium>=4.27.1",
     "pytest-django>=4.9.0",
     "django-filebrowser-no-grappelli>=4.0.2",
@@ -68,7 +68,8 @@ requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["tinymce"]
+where = ["."]
+include = ["tinymce*"]
 exclude = ["docs", "test_tinymce", "manage.py"]
 
 [tool.pytest.ini_options]

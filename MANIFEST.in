@@ -1,0 +1,6 @@
+include *.py *.txt *.md
+exclude manage.py
+exclude test_tinymce
+exclude docs
+recursive-include tinymce *
+global-exclude *.pyc __pycache__

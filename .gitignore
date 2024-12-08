@@ -113,3 +113,6 @@ venv*/
 *.sqlite3
 /static/
 /media/
+
+# MacOS files
+.DS_Store
