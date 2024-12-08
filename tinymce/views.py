@@ -11,6 +11,8 @@ from django.urls import NoReverseMatch, reverse
 from django.utils.html import strip_tags
 from django.views.decorators.cache import never_cache
 
+from tinymce import settings as mce_settings
+
 
 with suppress(ImportError):
     from enchant import checker, list_languages
@@ -84,9 +86,15 @@ def css(request):
     :return: Django http response with CSS file for TinyMCE 4
     :rtype: django.http.HttpResponse
     """
-    margin_left = 170  # For Django >= 1.9 style admin
+
+    # For Django >= 1.9 style admin
+    margin_left = 0
+    if not mce_settings.DISABLE_MARGIN_FIX and VERSION[:2] >= (1, 9):
+        margin_left = 170
+
     # For Django >= 2.0 responsive admin
     responsive_admin = VERSION[:2] >= (2, 0)
+
     return HttpResponse(
         render_to_string(
             "tinymce/tinymce4.css",

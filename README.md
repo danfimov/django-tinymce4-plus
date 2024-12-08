@@ -28,7 +28,7 @@ In Django Admin the widget is used automatically for all models that have `HTMLF
 
 ## Documentation
 
-http://dafimov.github.io/django-tinymce4-plus
+https://danfimov.github.io/django-tinymce4-plus/
 
 ## Useful links
 
@@ -40,4 +40,4 @@ http://dafimov.github.io/django-tinymce4-plus
 
 ## License
 
-MIT license. See [LICENSE](https://github.com/danfimov/django-tinymce4-plus/LICENSE)
+MIT license. See [LICENSE](https://github.com/danfimov/django-tinymce4-plus/blob/main/LICENSE)

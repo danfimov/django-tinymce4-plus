@@ -20,7 +20,7 @@ TINYMCE_DEFAULT_CONFIG = {
 
 TinyMCE v.4.3 and later includes the [codesample](https://www.tinymce.com/docs/plugins/codesample/) plugin that allows you to insert samples of programming code into edited content with pretty syntax highlighting. The `codesample` plugin uses the [Prism](http://prismjs.com/) library for syntax highlighting (default theme). The plugin supports the following languages: **HTML/XML**, **JavaScript**, **CSS**, **PHP**, **Ruby**, **Python**, **Java**, **C#**, and **C/C++**.
 
-The `codesample` plugin already includes the necessary Prism components to correctly display code samples in TinyMCE, but to make code samples correctly appear on webpages authored with TinyMCE, you need to include the links to Prism JavaScript/CSS files into the HTML code of your pages. The **tinymce4-plus** application already includes `prism.js` and `prism.css` files that can be referenced in your Django templates. For example:
+The `codesample` plugin already includes the necessary Prism components to correctly display code samples in TinyMCE, but to make code samples correctly appear on webpages authored with TinyMCE, you need to include the links to Prism JavaScript/CSS files into the HTML code of your pages. The `tinymce4-plus` application already includes `prism.js` and `prism.css` files that can be referenced in your Django templates. For example:
 
 ```html
 {% load static from staticfiles %}
