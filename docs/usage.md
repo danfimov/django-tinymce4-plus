@@ -2,7 +2,7 @@
 
 ## HTMLField for Models
 
-For developers who want to implement TinyMCE editor in their Django applications in the simplest possible way, **tinymce4-plus** provides an `HTMLField` field for models. This field can be used instead of a `TextField`. For example:
+For developers who want to implement TinyMCE editor in their Django applications in the simplest possible way, `tinymce4-plus` provides an `HTMLField` field for models. This field can be used instead of a `TextField`. For example:
 
 ```python
 from django.db import models
@@ -27,7 +27,7 @@ In the Django Admin interface, the widget is used automatically for all models t
 
 If you are using TinyMCE 4 in your website forms, you need to add the `form.media` template variable to the `<head>` section of your templates:
 
-```django
+```html
 <!DOCTYPE html>
 <html>
 <head>

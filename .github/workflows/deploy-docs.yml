@@ -1,15 +1,13 @@
-name: deploy-docs 
+name: Deploy documentation to GitHub Pages 
 on:
   push:
-    branches:
-      - main
-  pull_request:
     branches:
       - main
 permissions:
   contents: write
 jobs:
   deploy:
+    name: Publish documentation 📚
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

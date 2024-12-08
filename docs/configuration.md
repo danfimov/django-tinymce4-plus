@@ -2,14 +2,14 @@
 
 ## Application Configuration
 
-The following options can be defined for **tinymce4-plus** in your Django project's `settings.py` file.
+The following options can be defined for `tinymce4-plus` in your Django project's `settings.py` file.
 
 ### `TINYMCE_DEFAULT_CONFIG`
 
-TinyMCE 4 widget configuration. **tinymce4-plus** provides a reasonable default configuration with essential editing capabilities, so you need to use this option only if you want to create your own custom TinyMCE configuration.
+TinyMCE 4 widget configuration. `tinymce4-plus` provides a reasonable default configuration with essential editing capabilities, so you need to use this option only if you want to create your own custom TinyMCE configuration.
 
 //// note
-In **tinymce4-plus** the TinyMCE configuration is defined as a Python `dict`. The `dict` configuration is then translated to JSON configuration according to `json.JSONEncoder` rules.
+In `tinymce4-plus` the TinyMCE configuration is defined as a Python `dict`. The `dict` configuration is then translated to JSON configuration according to `json.JSONEncoder` rules.
 ////
 
 See [TinyMCE documentation](https://www.tinymce.com/docs/) for available configuration options.
@@ -42,7 +42,7 @@ If you are using a custom TinyMCE configuration, don't forget to add the [spellc
 
 ### `TINYMCE_FILEBROWSER`
 
-Enables file browser support in TinyMCE image and link dialogs. **tinymce4-plus** supports [django-filebrowser-no-grappelli](https://github.com/smacker/django-filebrowser-no-grappelli) file browser. Default: `True` if `'filebrowser'` is added to [INSTALLED_APPS](https://docs.djangoproject.com/en/2.0/ref/settings/#installed-apps), else `False`.
+Enables file browser support in TinyMCE image and link dialogs. `tinymce4-plus` supports [django-filebrowser-no-grappelli](https://github.com/smacker/django-filebrowser-no-grappelli) file browser. Default: `True` if `'filebrowser'` is added to [INSTALLED_APPS](https://docs.djangoproject.com/en/2.0/ref/settings/#installed-apps), else `False`.
 
 ### `TINYMCE_JS_URL`
 
@@ -64,11 +64,11 @@ A path to a CSS file with additional styles for TinyMCE. Unlike `content_style` 
 
 Allows defining custom TinyMCE callbacks, for example, `file_browser_callback` or `spellchecker_callback`. This is a Python `dict` where keys are the names of callbacks and values are JavaScript objects as Python strings. Default: `{}` (an empty `dict`). Read [TinyMCE documentation](https://www.tinymce.com/docs/) to learn about available callbacks.
 
-> **Note:** Custom `file_browser_callback` and `spellchecker_callback` options defined in `TINYMCE_CALLBACKS` override **tinymce4-plus** built-in callbacks.
+> **Note:** Custom `file_browser_callback` and `spellchecker_callback` options defined in `TINYMCE_CALLBACKS` override `tinymce4-plus` built-in callbacks.
 
 ## Language Configuration
 
-By default, **tinymce4-plus** sets TinyMCE interface language and writing directionality depending on the current Django language. However, to correctly select a TinyMCE 4 translation file, the Django language code must match the name of the TinyMCE translation file. Supported combinations:
+By default, `tinymce4-plus` sets TinyMCE interface language and writing directionality depending on the current Django language. However, to correctly select a TinyMCE 4 translation file, the Django language code must match the name of the TinyMCE translation file. Supported combinations:
 
 - `ll` (Django) => `ll.js` (TinyMCE)
 - `ll-cc` (Django) => `ll_CC.js` (TinyMCE)

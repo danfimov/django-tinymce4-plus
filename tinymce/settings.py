@@ -63,3 +63,5 @@ CSS_URL = getattr(settings, 'TINYMCE_CSS_URL', None)
 
 # Enable integration with `django-filebrowser-no-grappelli`
 USE_FILEBROWSER = getattr(settings, 'TINYMCE_FILEBROWSER', 'filebrowser' in settings.INSTALLED_APPS)
+
+DISABLE_MARGIN_FIX = getattr(settings, 'TINYMCE_DISABLE_MARGIN_FIX', False)

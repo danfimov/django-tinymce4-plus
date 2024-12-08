@@ -27,7 +27,7 @@ from test_tinymce.views import TestCreateView, TestDisplayView
 if VERSION < (4, 0):
     from django.conf.urls import url
 else:
-    from django.urls import path as url
+    from django.urls import re_path as url
 
 
 urlpatterns = [

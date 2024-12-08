@@ -2,7 +2,7 @@
 
 ## Basic installation and configuration
 
-Install **django-tinymce4-plus** from PyPI:
+Install `django-tinymce4-plus` from PyPI:
 
 ```bash
 pip install django-tinymce4-plus
@@ -61,7 +61,7 @@ sudo apt-get install enchant
 
 Also, you need to add the necessary spelling dictionaries if they are missing from `pyenchant` default installation on your system.
 
-Read the [Language Configuration](configuration.md#language-configuration) subsection about configuring the **tinymce4-plus** spellchecker.
+Read the [Language Configuration](configuration.md#language-configuration) subsection about configuring the `tinymce4-plus` spellchecker.
 
 ## Upgrade
 
@@ -74,5 +74,5 @@ pip install django-tinymce4-plus==X.Y.Z
 Unless you are loading TinyMCE 4 from a CDN, after upgrading you need to run Django's `collectstatic` command to update TinyMCE 4 static files in your folder where your project's static files are served from:
 
 ```bash
-python manage.py collectstatic
+python3 manage.py collectstatic
 ```
