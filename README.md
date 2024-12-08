@@ -40,4 +40,4 @@ http://dafimov.github.io/django-tinymce4-plus
 
 ## License
 
-MIT license. See LICENSE.txt
+MIT license. See [LICENSE](https://github.com/danfimov/django-tinymce4-plus/LICENSE)
