@@ -2,7 +2,7 @@
 
 `django-tinymce4-plus` is a reworked fork of [django-tinymce4](https://github.com/dani0805/django-tinymce4). It provides a [TinyMCE 4](https://www.tinymce.com/) editor widget that can be used in Django forms and models.
 
-![TinyMCE 4 in Django Admin](_static/screenshot.png)
+![TinyMCE 4 in Django Admin](_static/html_form.png)
 
 *TinyMCE 4 editor in Django Admin interface*
 
