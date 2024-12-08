@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>http://danfimov.gitlab.io/django-tinymce4-plus/</loc>
+         <lastmod>2024-12-08</lastmod>
+    </url>
+    <url>
+         <loc>http://danfimov.gitlab.io/django-tinymce4-plus/advanced/</loc>
+         <lastmod>2024-12-08</lastmod>
+    </url>
+    <url>
+         <loc>http://danfimov.gitlab.io/django-tinymce4-plus/changelog/</loc>
+         <lastmod>2024-12-08</lastmod>
+    </url>
+    <url>
+         <loc>http://danfimov.gitlab.io/django-tinymce4-plus/configuration/</loc>
+         <lastmod>2024-12-08</lastmod>
+    </url>
+    <url>
+         <loc>http://danfimov.gitlab.io/django-tinymce4-plus/example_project/</loc>
+         <lastmod>2024-12-08</lastmod>
+    </url>
+    <url>
+         <loc>http://danfimov.gitlab.io/django-tinymce4-plus/installation/</loc>
+         <lastmod>2024-12-08</lastmod>
+    </url>
+    <url>
+         <loc>http://danfimov.gitlab.io/django-tinymce4-plus/usage/</loc>
+         <lastmod>2024-12-08</lastmod>
+    </url>
+</urlset>
