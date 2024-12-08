@@ -312,7 +312,7 @@ wheels = [
 
 [[package]]
 name = "django-tinymce4-plus"
-version = "0.0.0"
+version = "1.9.0"
 source = { editable = "." }
 dependencies = [
     { name = "django" },
