@@ -2,6 +2,7 @@
 name = "django-tinymce4-plus"
 description = "A Django application that provides a fully functional TinyMCE 4 editor widget for models and forms."
 readme = "README.md"
+version = "1.9.0"
 requires-python = ">=3.8"
 license = {text = "MIT License"}
 authors = [
@@ -31,18 +32,17 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Application Frameworks",
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
-dynamic = ["version"]
 dependencies = [
     "django>=1.11",
     "jsmin",
 ]
 
 [project.urls]
-homepage = "https://github.com/danfimov/django-tinymce4-plus"
-repository = "https://github.com/danfimov/django-tinymce4-plus"
-documentation = "http://dafimov.github.io/django-tinymce4-plus"
-issues = "http://dafimov.github.io/django-tinymce4-plus/issues"
-changelog = "https://github.com/danfimov/django-tinymce4-plus/docs/changelog.md"
+Homepage = "https://github.com/danfimov/django-tinymce4-plus"
+Repository = "https://github.com/danfimov/django-tinymce4-plus"
+Documentation = "http://dafimov.github.io/django-tinymce4-plus"
+Issues = "http://dafimov.github.io/django-tinymce4-plus/issues"
+Changelog = "https://github.com/danfimov/django-tinymce4-plus/docs/changelog.md"
 
 [project.optional-dependencies]
 enchant = [
