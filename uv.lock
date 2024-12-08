@@ -312,18 +312,22 @@ wheels = [
 
 [[package]]
 name = "django-tinymce4-plus"
-version = "1.9.0"
-source = { virtual = "." }
+version = "0.0.0"
+source = { editable = "." }
 dependencies = [
     { name = "django" },
     { name = "jsmin" },
+]
+
+[package.optional-dependencies]
+enchant = [
+    { name = "pyenchant" },
 ]
 
 [package.dependency-groups]
 dev = [
     { name = "django-filebrowser-no-grappelli" },
     { name = "pillow" },
-    { name = "pyenchant" },
     { name = "pytest" },
     { name = "pytest-coverage" },
     { name = "pytest-django" },
@@ -338,13 +342,13 @@ docs = [
 requires-dist = [
     { name = "django", specifier = ">=1.11" },
     { name = "jsmin" },
+    { name = "pyenchant", marker = "extra == 'enchant'", specifier = ">=3.2.2" },
 ]
 
 [package.metadata.dependency-groups]
 dev = [
     { name = "django-filebrowser-no-grappelli", specifier = ">=4.0.2" },
     { name = "pillow", specifier = ">=10.4.0" },
-    { name = "pyenchant", specifier = ">=3.2.2" },
     { name = "pytest", specifier = ">=8.3.4" },
     { name = "pytest-coverage", specifier = ">=0.0" },
     { name = "pytest-django", specifier = ">=4.9.0" },
