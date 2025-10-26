@@ -11,17 +11,21 @@ repos:
     rev: v6.0.0
     hooks:
     -   id: trailing-whitespace
+        exclude: |
+          (?x)^(
+            tinymce/static/.*
+          )$
     -   id: mixed-line-ending
     -   id: check-case-conflict
     -   id: check-ast
     -   id: check-toml
     -   id: check-yaml
     -   id: check-added-large-files
+    -   id: end-of-file-fixer
         exclude: |
           (?x)^(
-            taskiq_dashboard/api/static/.*
+            tinymce/static/.*
           )$
-    -   id: end-of-file-fixer
 
 -   repo: https://github.com/crate-ci/typos
     rev: v1.38.1
@@ -40,24 +44,6 @@ repos:
     -   id: ruff
         name: Ruff
         entry: make ruff
-        language: python
-        types: [python]
-        require_serial: true
-        verbose: true
-        pass_filenames: false
-
-    -   id: mypy
-        name: Mypy
-        entry: make mypy
-        language: python
-        types: [python]
-        require_serial: true
-        verbose: true
-        pass_filenames: false
-
-    -   id: bandit
-        name: bandit
-        entry: uv run --active --frozen bandit -c pyproject.toml -r taskiq_dashboard
         language: python
         types: [python]
         require_serial: true
