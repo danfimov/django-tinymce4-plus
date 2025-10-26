@@ -16,7 +16,7 @@ jobs:
           version: "latest"
           python-version: 3.12
       - name: Install Dependencies
-        run: uv pip install --system .[enchant,dev]
+        run: uv sync --all-extras
       - run: uv run ruff check . --output-format github
 
   test:
@@ -40,12 +40,12 @@ jobs:
           version: "latest"
           python-version: ${{ matrix.python-version }}
       - name: Install Dependencies
-        run: uv pip install --system .[enchant,dev]
+        run: uv sync --all-extras
       - name: Install Dajngo 1.11
         if: matrix.django-version == 'django-1.11'
-        run: uv pip install --system "django==1.11.29"
+        run: uv pip install "django==1.11.29"
       - name: Install Django 4.2
         if: matrix.django-version == 'django-4.2'
-        run: uv pip install --system "django==4.2.17"
+        run: uv pip install "django==4.2.17"
       - name: Test
         run: uv run pytest
