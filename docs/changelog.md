@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.10.0
+
+- Added support for Python 3.12 and 3.13;
+- Reorganized development dependencies into separate groups (lint, test, docs) and introduced new linting tools (ruff, codespell, zizmor);
+- Migrated from setuptools to uv_build as the build backend.
+
+## 1.9.1
+
+- Fix static files distribution;
+- Add more information about package to readme.
+
 ## 1.9.0
 - Support for Python from 3.8 to 3.11;
 - Support for LTS versions of Django (including 4.2);

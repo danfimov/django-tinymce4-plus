@@ -1,7 +1,21 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+
 site_name: django-tinymce4-plus
 site_url: http://danfimov.gitlab.io/django-tinymce4-plus
 repo_url: https://github.com/danfimov/django-tinymce4-plus
 repo_name: django-tinymce4-plus
+
+nav:
+  - General: index.md
+  - Installation: installation.md
+  - Configuration: configuration.md
+  - Usage: usage.md
+  - Advanced usage: advanced.md
+  - Example project: example_project.md
+  - Contributing:
+      - contributing.md
+  - Changelog: changelog.md
+
 theme:
   name: material
   features:
@@ -11,57 +25,67 @@ theme:
     repo: fontawesome/brands/github-alt
   language: en
   palette:
-    primary: blue
-    accent: blue
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Use light mode
 
-nav:
-  - General: index.md
-  - Installation: installation.md
-  - Configuration: configuration.md
-  - Usage: usage.md
-  - Advanced usage: advanced.md
-  - Example project: example_project.md
-  - Changelog: changelog.md
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Use dark mode
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Use system colors
+
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
+  links:
+    absolute_links: relative_to_docs
+
 markdown_extensions:
-  # Python Markdown
-  - abbr
-  - attr_list
-  - def_list
-  - footnotes
-  - md_in_html
   - toc:
       permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
 
-  # Python Markdown Extensions
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.betterem:
-      smart_enable: all
-  - pymdownx.caret
-  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      use_pygments: true
+
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - pymdownx.highlight
-  - pymdownx.inlinehilite
-  - pymdownx.keys
-  - pymdownx.mark
-  - pymdownx.smartsymbols
-  - pymdownx.superfences
+
   - pymdownx.tabbed:
       alternate_style: true
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
 
-  # pymdownx blocks
-  - pymdownx.blocks.admonition:
-      types:
-      - note
-      - attention
-      - caution
-      - danger
-      - error
-      - tip
-      - hint
-      - warning
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.blocks.caption
+  - tables
+  - attr_list
+  - admonition
+  - md_in_html  # for badges in readme.md
+
+plugins:
+  - search

@@ -1,9 +1,9 @@
 # django-tinymce4-plus
 
-![PyPI version](https://img.shields.io/pypi/v/django-tinymce4-plus.svg?style=flat&color=light-green)
-![Python versions](https://img.shields.io/pypi/pyversions/django-tinymce4-plus.svg)
-![Django versions](https://img.shields.io/pypi/djversions/django-tinymce4-plus.svg)
-[![Code quality](https://github.com/danfimov/django-tinymce4-plus/actions/workflows/code-quality.yml/badge.svg)](https://github.com/danfimov/django-tinymce4-plus/actions/workflows/code-quality.yml)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django-tinymce4-plus?style=for-the-badge&logo=python)](https://pypi.org/project/django-tinymce4-plus/)
+[![PyPI](https://img.shields.io/pypi/v/django-tinymce4-plus?style=for-the-badge&logo=pypi)](https://pypi.org/project/django-tinymce4-plus/)
+![Django versions](https://img.shields.io/pypi/djversions/django-tinymce4-plus.svg?style=for-the-badge&logo=django)
+
 
 `django-tinymce4-plus` is a reworked fork of [django-tinymce4](https://github.com/dani0805/django-tinymce4). It provides a [TinyMCE 4](https://www.tinymce.com/) editor widget that can be used in Django forms and models.
 
@@ -17,7 +17,7 @@ In this fork, all legacy and broken code has been cleaned in order to provide a 
 pip install django-tinymce4-plus
 ```
 
-## Usage 
+## Usage
 In your code:
 
 ```python

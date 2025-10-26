@@ -1,0 +1,6 @@
+[files]
+extend-exclude = [
+    "tinymce/static",
+    "tinymce/templates",
+    "test_tinymce/tests/test_tinymce.py",
+]

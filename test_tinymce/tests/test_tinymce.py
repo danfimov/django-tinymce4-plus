@@ -80,7 +80,7 @@ class TestRenderTinyMceWidget(TestSelenium):
             self.browser.get(self.live_server_url + reverse('create'))
             with log_browser_errors(self.browser):
                 self.browser.find_element(By.ID, 'mceu_16')
-                self.assertTrue('Appuyer sur ALT-F9 pour le menu.' in self.browser.page_source)
+                self.assertTrue('Appuyer sure ALT-F9 pour le menu.' in self.browser.page_source)
         with self.settings(LANGUAGE_CODE='uk'):
             self.browser.refresh()
             with log_browser_errors(self.browser):

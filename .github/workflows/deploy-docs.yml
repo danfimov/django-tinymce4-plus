@@ -1,29 +1,32 @@
-name: Deploy documentation to GitHub Pages 
+name: Release docs
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    types: [closed]
+    branches: [ main ]
+
 permissions:
   contents: write
+
 jobs:
   deploy:
-    name: Publish documentation 📚
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true) }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: true
+
       - name: Configure Git Credentials
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      - uses: actions/setup-python@v5
+
+      - uses: astral-sh/setup-uv@3259c6206f993105e3a61b142c2d97bf4b9ef83d # v7.1.0
         with:
-          python-version: 3.11
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
-      - uses: actions/cache@v4
-        with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: .cache
-          restore-keys: |
-            mkdocs-material-
-      - run: pip install mkdocs-material 
-      - run: mkdocs gh-deploy --force
+          enable-cache: true
+          python-version: "3.12"
+          version: "latest"
+      - name: Install Dependencies
+        run: uv sync --only-group docs
+      - name: Deploy Docs
+        run: uv run mkdocs gh-deploy --force

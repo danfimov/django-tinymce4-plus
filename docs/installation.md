@@ -4,9 +4,23 @@
 
 Install `django-tinymce4-plus` from PyPI:
 
-```bash
-pip install django-tinymce4-plus
-```
+=== "pip"
+
+    ```bash
+    pip install django-tinymce4-plus
+    ```
+
+=== "uv"
+
+    ```bash
+    uv add django-tinymce4-plus
+    ```
+
+=== "poetry"
+
+    ```bash
+    poetry add django-tinymce4-plus
+    ```
 
 Add `tinymce` to `INSTALLED_APPS` in `settings.py` for your Django project:
 
@@ -43,15 +57,43 @@ If you want to use [django-filebrowser-no-grappelli](https://github.com/smacker/
 
 For TinyMCE spellchecker plugin, you need to install the [pyenchant](https://pythonhosted.org/pyenchant/) extra package:
 
-```bash
-pip install django-tinymce4-plus[enchant]
-```
+=== "pip"
 
-or just 
+    ```bash
+    pip install django-tinymce4-plus[enchant]
+    ```
 
-```bash
-pip install pyenchant
-```
+=== "uv"
+
+    ```bash
+    uv add django-tinymce4-plus[enchant]
+    ```
+
+=== "poetry"
+
+    ```bash
+    poetry add django-tinymce4-plus[enchant]
+    ```
+
+or just
+
+=== "pip"
+
+    ```bash
+    pip install pyenchant
+    ```
+
+=== "uv"
+
+    ```bash
+    uv add pyenchant
+    ```
+
+=== "poetry"
+
+    ```bash
+    poetry add pyenchant
+    ```
 
 On some Linux systems, you may also need to install binary `enchant` libraries prior to installing `pyenchant`. For example, on Debian/Ubuntu use the following command:
 
@@ -67,9 +109,24 @@ Read the [Language Configuration](configuration.md#language-configuration) subse
 
 It is strongly recommended to upgrade `tinymce4-plus` by specifying the exact application version you want to upgrade to:
 
-```bash
-pip install django-tinymce4-plus==X.Y.Z
-```
+=== "pip"
+
+    ```bash
+    pip install django-tinymce4-plus==X.Y.Z
+    ```
+
+=== "uv"
+
+    ```bash
+    uv add django-tinymce4-plus==X.Y.Z
+    ```
+
+=== "poetry"
+
+    ```bash
+    poetry add django-tinymce4-plus==X.Y.Z
+    ```
+
 
 Unless you are loading TinyMCE 4 from a CDN, after upgrading you need to run Django's `collectstatic` command to update TinyMCE 4 static files in your folder where your project's static files are served from:
 

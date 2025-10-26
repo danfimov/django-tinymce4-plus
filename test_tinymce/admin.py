@@ -11,4 +11,3 @@ class ChildInline(admin.StackedInline):
 @admin.register(TestModel)
 class TestModelAdmin(admin.ModelAdmin):
     inlines = [ChildInline]
-

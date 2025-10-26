@@ -51,9 +51,9 @@ if JS_URL is None:
     settings.DEBUG = _orig_debug
 
 # Additional JS files for TinyMCE (e.g. custom plugins)
-ADDIONAL_JS_URLS = getattr(settings, 'TINYMCE_ADDITIONAL_JS_URLS', None)
+ADDITIONAL_JS_URLS = getattr(settings, 'TINYMCE_ADDITIONAL_JS_URLS', None)
 
-# TinyMCE 4 calback JavaScript functions
+# TinyMCE 4 callback JavaScript functions
 CALLBACKS = getattr(settings, 'TINYMCE_CALLBACKS', {})
 
 """
