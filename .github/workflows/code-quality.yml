@@ -6,24 +6,18 @@ jobs:
     runs-on: ubuntu-latest
     name: Lint code 🙈
     steps:
-    - uses: actions/checkout@v4
-    - uses: astral-sh/setup-uv@v4
-      with:
-        version: "latest"
-    - uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-    - uses: actions/cache@v4
-      id: cache
-      with:
-        path: ${{ env.pythonLocation }}
-        key: ${{ runner.os }}-python-${{ env.pythonLocation }}-${{ hashFiles('pyproject.toml') }}-uv
-    - name: Install Dependencies
-      if: steps.cache.outputs.cache-hit != 'true'
-      run: |
-        uv pip install --system .[enchant,dev]
-    - run: >
-        uv run ruff check .
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+      - id: setup-uv
+        uses: astral-sh/setup-uv@3259c6206f993105e3a61b142c2d97bf4b9ef83d # v7.1.0
+        with:
+          enable-cache: true
+          version: "latest"
+          python-version: 3.12
+      - name: Install Dependencies
+        run: uv pip install --system .[enchant,dev]
+      - run: uv run ruff check . --output-format github
 
   test:
     if: github.event.pull_request.draft == false
@@ -31,34 +25,27 @@ jobs:
     name: Test with pytest 🧑‍🔬
     strategy:
       matrix:
-        python-version: ["3.8", "3.11"]
+        python-version: ["3.8", "3.11", "3.13"]
         django-version: ["django-1.11", "django-4.2"]
       fail-fast: false
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
+          persist-credentials: false
+      - id: setup-uv
+        uses: astral-sh/setup-uv@3259c6206f993105e3a61b142c2d97bf4b9ef83d # v7.1.0
+        with:
+          enable-cache: true
+          cache-suffix: ${{ matrix.python-version }}
           version: "latest"
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
           python-version: ${{ matrix.python-version }}
-      - uses: actions/cache@v4
-        id: cache
-        with:
-          path: ${{ env.pythonLocation }}
-          key: ${{ runner.os }}-python-${{ env.pythonLocation }}-${{ hashFiles('pyproject.toml') }}-uv
       - name: Install Dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: |
-          uv pip install --system .[enchant,dev]
+        run: uv pip install --system .[enchant,dev]
       - name: Install Dajngo 1.11
         if: matrix.django-version == 'django-1.11'
         run: uv pip install --system "django==1.11.29"
       - name: Install Django 4.2
         if: matrix.django-version == 'django-4.2'
         run: uv pip install --system "django==4.2.17"
-      - run: mkdir coverage
       - name: Test
-        run: >
-          uv run pytest
+        run: uv run pytest

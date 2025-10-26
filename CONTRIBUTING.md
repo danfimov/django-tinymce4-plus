@@ -17,7 +17,7 @@ including:
 Any help with developing `django-tinymce4-plus` is always appreciated. When
 submitting pull requests please follow these rules:
 
-- PRs should be submited into `develop` branch.
+- PRs should be submitted into `develop` branch.
 - Python code must follow `PEP-8` style conventions.
 - Docstrings must have Sphinx-compatible ReStructuredText formatting.
 - Please provide a short rationale on why do you think this change is needed.

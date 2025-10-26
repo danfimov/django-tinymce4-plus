@@ -47,7 +47,7 @@ For TinyMCE spellchecker plugin, you need to install the [pyenchant](https://pyt
 pip install django-tinymce4-plus[enchant]
 ```
 
-or just 
+or just
 
 ```bash
 pip install pyenchant

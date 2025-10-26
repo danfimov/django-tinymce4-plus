@@ -2,7 +2,7 @@
 name = "django-tinymce4-plus"
 description = "A Django application that provides a fully functional TinyMCE 4 editor widget for models and forms."
 readme = "README.md"
-version = "1.9.1"
+version = "1.10.0"
 requires-python = ">=3.8"
 license = {text = "MIT License"}
 authors = [
@@ -29,6 +29,8 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Topic :: Software Development :: Libraries :: Application Frameworks",
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
@@ -51,9 +53,19 @@ enchant = [
 
 [dependency-groups]
 dev = [
+    {include-group = "lint"},
+    {include-group = "test"},
+    {include-group = "docs"},
+    "prek>=0.2.8",
+]
+lint = [
+    "ruff>=0.14.2",
+    "codespell>=2.4.1",
+    "zizmor>=1.2.0",
+]
+test = [
     "pytest>=8.3.4",
     "pytest-coverage>=0.0",
-    "ruff>=0.8.1",
     "selenium>=4.27.1",
     "pytest-django>=4.9.0",
     "django-filebrowser-no-grappelli>=4.0.2",
@@ -64,13 +76,12 @@ docs = [
 ]
 
 [build-system]
-requires = ["setuptools>=42", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["uv_build>=0.9.5,<0.10.0"]
+build-backend = "uv_build"
 
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["tinymce*"]
-exclude = ["docs", "test_tinymce", "manage.py"]
+[tool.uv.build-backend]
+module-name = "tinymce"
+module-root = ""
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "test_tinymce.settings"
