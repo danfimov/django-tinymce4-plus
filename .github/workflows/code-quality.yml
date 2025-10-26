@@ -4,7 +4,7 @@ on: [pull_request]
 jobs:
   lint:
     runs-on: ubuntu-latest
-    name: Lint code 🙈
+    name: Lint code
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
@@ -22,7 +22,7 @@ jobs:
   test:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
-    name: Test with pytest 🧑‍🔬
+    name: Test with pytest
     strategy:
       matrix:
         python-version: ["3.8", "3.11", "3.13"]
